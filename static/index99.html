@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- github：【umena337/17kan】https://github.com/umena337/17kan -->
+<html>
+<head>
+    <title>17看</title>
+    <link rel="stylesheet" href="/static/DPlayer.min.css"> <!-- 【DPlayer】版本v1.27.0-12-g4f61091 -->
+    <!-- 访问受限https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css -->
+</head>
+<body>
+    <div id="dplayer"></div>
+    <div id="current-user" style="background-color: #FFF8DC"> -🌍 当前全部用户 🌏- </div>
+
+    <div>
+        <button onclick="dp.play()">播放</button>
+        <button onclick="dp.pause()">暂停</button>
+        <button onclick="dp.video.currentTime+=10">+10秒</button>
+        <button onclick="dp.video.currentTime-=10">-10秒</button>
+        <button onclick="dp.volume(0, true, true)">静音</button>
+        <button onclick="dp.volume(1, true, true)">音量100</button>
+        <button onclick="dp.video.playbackRate=1">1倍速</button>
+        <button onclick="dp.video.playbackRate=2">2倍速</button>
+        <button onclick="dp.video.currentTime=60">到60秒</button>
+        <button onclick="dp.switchVideo({url: '/static/001.mp4'})">切001.mp4</button>
+        <button onclick="dp.switchVideo({url: '/static/002.mp4'})">切002.mp4</button>
+        <button onclick="dp.switchVideo({url: 'http://127.0.0.1:59117/static/001.mp4'})">切固定视频链接</button>
+
+    </div>
+
+    <div>
+        <button onclick="follow_play_btn()">全体播放</button>
+        <button onclick="follow_pause_btn()">全体暂停</button>
+        <button onclick="follow_me_btn()">🌸全体向我同步</button>
+        <button onclick="follow_m1_btn()">全体1分钟</button>
+        <button onclick="speed_btn(0.5)">全体0.5倍速</button>
+        <button onclick="speed_btn(1.0)">全体1倍速</button>
+        <button onclick="speed_btn(1.5)">全体1.5倍速</button>
+        <button onclick="speed_btn(4.0)">全体4倍速</button>
+    </div>
+    <div>
+        <input type="text" id="txt03" placeholder="输入全体元素消息内容...">
+        <button onclick="element_msg_btn()">🍒发送全体元素消息</button>
+    </div>
+
+    <div>
+        <input type="text" id="txt01" placeholder="输入全体通知notice内容...">
+        <button onclick="notice_btn()">发送全体通知notice</button>
+        <input type="text" id="txt02" placeholder="输入全体弹幕广播内容...">
+        <button onclick="danmu_btn()">发送全体弹幕广播</button>
+    </div>
+
+    <div>
+        <input type="text" id="video_link1" placeholder="输入外部视频链接...">
+        <button onclick="video_link_btn()">切换外部视频源</button>
+    </div>
+    <div>
+        视频时长<span id="e505duration">⏳</span>|
+        视频大小<span id="e509size">⏳</span>|
+        平均<span id="e510per">⏳</span>KB/s|
+        分辨率<span id="e506">⏳</span>x<span id="e507">⏳</span>|
+        已多缓存<span id="e508">⏳</span>秒|
+        上次缓存<span id="e509per">⏳</span>KB/s
+    </div>
+    <div>
+        【功能调试】
+        <button onclick="dp.danmaku.draw({text: '弹幕123'})">弹幕draw</button>
+        <button onclick="dp.notice('通知123')">dp通知</button>
+        <button onclick="element_message_btn('元素123')">元素消息按钮</button>
+        <button onclick="broadcast_position()">弹幕进度</button>
+        <button onclick="broadcast_position()">dp弹幕</button>
+
+    </div>
+    <div>
+        dp弹幕开关<button onclick="btn_let_dplayer_danmu()" id="id_let_dplayer_danmu">当前⏳</button>
+        dplayer的弹幕draw.电脑,电脑全屏,手机不全屏ok.手机全屏看不到，默认关
+    </div>
+    <div>
+        网速显示开关<button onclick="btn_let_net_speed()" id="id_let_net_speed">当前⏳</button>
+        前端video的buffered变化计算下载速度，电脑google浏览器准，其他不行
+    </div>
+    <div>
+        守护开关<button onclick="btn_guard()" id="id_guard">当前⏳</button>
+        开启后当自己快，自己回退，对方快全体向我同步，一人开就行
+    </div>
+    <div>
+    选择本机文件播放<input type="file" id="input_local_video" accept="video/*">
+
+    </div>
+
+
+    <div id="id_div_msg_log" style="background-color: #E0FFFF">🐬历史消息:</div>
+
+
+
+
+
+    <script src="/static/DPlayer.min.js"></script> <!-- 【DPlayer】版本v1.27.0-12-g4f61091文档https://dplayer.diygod.dev -->
+    <!-- 访问受限https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js -->
+    <script src="/static/socket.io.min.js"></script> <!--  【Socket.IO】版本v4.7.4文档https://socket.io/zh-CN/docs/v4/ -->
+    <!-- 访问受限https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.min.js -->
+    <script src="/static/index99script.js"></script> <!-- 专门放一个文件里缩进好看 -->
+</body>
+</html>
