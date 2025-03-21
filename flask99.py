@@ -193,9 +193,12 @@ def handle_link2(data):
 def handle_danmu2(data):
     # type 0是滚动 1是顶部 2是底部
     print('接收弹幕', str(data))  # 接收弹幕 {'user': 'aa', 'text': 'wdwd', 'time': 0, 'color': 16777215, 'type': 0}
+    color2 = data.get('color', '#FFFF00')  # 收到dplayer内置弹幕颜色如16777215或3788031是十进制颜色值
+    if type(color2) == int:
+        color2 = f"#{color2:06X}"    # 转换为十六进制格式（如#RRGGBB）
     d2 = {
         'text': '%s:%s' % (data['user'], data['text']),
-        'color': data.get('color', '#FFFF00'),  # 默认值#FFFF00黄色
+        'color': color2,  # 默认值#FFFF00黄色
         'type': data.get('type', 0),      # 种类 0是滚动 1是顶部 2是底部
     }
     emit('danmu_all', d2, broadcast=True)   # 发送广播，emit设置broadcast=True可以实现广播功能
