@@ -450,5 +450,6 @@ dp.container.appendChild(e03guard);  //将元素插入到父元素的末尾
 
 // 页面加载完成后执行
 window.addEventListener('DOMContentLoaded', () => {
-    //get_info_5();
+  document.querySelector('title').textContent = "17kan【" + user99 + "】";
+  //get_info_5();
 });
